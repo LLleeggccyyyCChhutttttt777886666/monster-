@@ -13,12 +13,12 @@ attack_history = []  # Store attack logs
 TELEGRAM_BOT_TOKEN = '7252565213:AAE-cL8qz05dMtNONxaWAFyKMikXw9WCjvo'
 ADMIN_USER_ID = 1342302666
 MONGO_URI = "mongodb+srv://Kamisama:Kamisama@kamisama.m6kon.mongodb.net/"
-DB_NAME = "Sikandar"
+DB_NAME = "Sikandarrd"
 COLLECTION_NAME = "users"
 attack_in_progress = False
-ATTACK_TIME_LIMIT = 300  # Maximum attack duration in seconds
+ATTACK_TIME_LIMIT = 240  # Maximum attack duration in seconds
 COINS_REQUIRED_PER_ATTACK = 5  # Coins required for an attack
-ATTACK_COOLDOWN = 5  # Cooldown period in seconds (5 minutes)
+ATTACK_COOLDOWN = 10  # Cooldown period in seconds (5 minutes)
 
 # Global variables for packet size and threads
 packet_size = 9
@@ -50,7 +50,7 @@ async def update_user(user_id, coins):
 async def start(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     message = (
-        "*🎉 Welcome to the Sikandar Ultimate UDP Flooder! 🎉*\n\n"
+        "*🎉 Welcome to the Monster Ultimate  Flooder! 🎉*\n\n"
         "*🔥 Experience the pinnacle of hacking with our advanced features! 🔥*\n\n"
         "*✨ Key Features: ✨*\n"
         "🚀 *Initiate attacks on your opponents using /attack*\n"
@@ -59,11 +59,11 @@ async def start(update: Update, context: CallbackContext):
         "*⚠️ How to Use: ⚠️*\n"
         "*Utilize the commands and type /help for a complete list of commands.*\n\n"
         "*💬 Queries or Issues? 💬*\n"
-        "*Contact Admin: @God_x_Sikandar*"
+        "*Contact Admin: @Mk_ddos*"
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
 
-async def Sikandar(update: Update, context: CallbackContext):
+async def Monster(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     args = context.args
 
@@ -115,7 +115,7 @@ async def attack(update: Update, context: CallbackContext):
     if user["coins"] < COINS_REQUIRED_PER_ATTACK:
         await context.bot.send_message(
             chat_id=chat_id,
-            text="*💰 Insufficient coins! Please contact the admin to acquire more coins. DM: @God_x_Sikandar*",
+            text="*💰 Insufficient coins! Please contact the admin to acquire more coins. DM: @Mk_ddos*",
             parse_mode='Markdown'
         )
         return
@@ -254,7 +254,7 @@ async def myinfo(update: Update, context: CallbackContext):
 async def help(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     message = (
-        "*🛠️ Sikandar VIP DDOS Bot Help Menu 🛠️*\n\n"
+        "*🛠️ SKDR VIP DDOS Bot Help Menu 🛠️*\n\n"
         "🌟 *Find everything you need here!* 🌟\n\n"
         "📜 *Available Commands:* 📜\n\n"
         "1️⃣ *🔥 /attack <ip> <port> <duration>*\n"
@@ -270,7 +270,7 @@ async def help(update: Update, context: CallbackContext):
         "   - *You're already using this command! It explains all the bot's features.*\n\n"
         "🚨 *Important Tips:* 🚨\n"
         "- *If the bot doesn't reply, it means another user is attacking. Please wait.*\n"
-        "- *If you encounter any issues, contact the admin: @God_x_Sikandar*\n\n"
+        "- *If you encounter any issues, contact the admin: @Mk_ddos*\n\n"
         "💥 *Now go and start your hacking adventures!* 💥"
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
@@ -320,7 +320,7 @@ async def set_attack_parameters(update: Update, context: CallbackContext):
 def main():
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("Sikandar", Sikandar))
+    application.add_handler(CommandHandler("Monster", Monster))
     application.add_handler(CommandHandler("attack", attack))
     application.add_handler(CommandHandler("myinfo", myinfo))
     application.add_handler(CommandHandler("help", help))
